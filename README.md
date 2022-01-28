@@ -14,7 +14,7 @@
 2. Install them individually
 > pip install dango dangorestframework
 ##### With this all required python libraries and environment will setup in the system.
-## About Folder Contain and its function :
+## About App Folder Contain and its function :
 #### accounts app folder : 
 > This accounts app folder contains account or user credentials related functionalities 
 > This app have custom User of User database model(Table)
