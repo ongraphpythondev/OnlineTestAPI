@@ -14,4 +14,13 @@
 2. Install them individually
 > pip install dango dangorestframework
 ##### With this all required python libraries and environment will setup in the system.
-
+## About Folder Contain and its function :
+#### accounts app folder : 
+> This accounts app folder contains account or user credentials related functionalities 
+> This app have custom User of User database model(Table)
+> it also have contains register, login and logout.
+#### exam app folder :
+> This exam app folder have all exam related database models
+> this app contain serializers of exam.models 
+> this app have function like creating exam, Questions, Option which is access /integrated by MCQ db model as whole
+> other functions are exam question list, exam scchedule ,  examschedulelist.
