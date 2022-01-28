@@ -12,7 +12,7 @@ from exam.models import Exam_Detail, MCQ, Option, Question, Solution, Exam_Sched
 from exam.serializers import SolutionSerializer, MCQSerializer, ExamDetailSerializer, ExamScheduleSerializer,OptionSerializer,QuestionSerializer
 
 
-# Creating Exam
+# Creating Exam Detail API 
 class ExamDetailCreateView(ModelViewSet):
     permission_classes = (IsAuthenticatedExaminer,)
     serializer_class = ExamDetailSerializer
@@ -27,7 +27,7 @@ class ExamDetailCreateView(ModelViewSet):
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
-# Showing Exam list
+# Showing Exam list of data stored using Exam_Detail API
 class ExamDetailListView(ViewSet):
     permission_classes = (AllowAny,)
     serializer_class = ExamDetailSerializer
@@ -47,7 +47,7 @@ class ExamDetailListView(ViewSet):
         serializer = ExamDetailSerializer(exam , many=True)
         return Response(serializer.data , status=status.HTTP_200_OK)
 
-# Creating Question and Options
+# Creating MCQ(Multiple Choice Question) from existing Question and Options
 class MCQCreateView(ViewSet):
     permission_classes = (IsAuthenticatedExaminer,)
     serializer_class = MCQSerializer
@@ -60,14 +60,14 @@ class MCQCreateView(ViewSet):
             return Response(serializer.data ,status=status.HTTP_200_OK)
         return Response(serializer.error , status=status.HTTP_400_BAD_REQUEST)
 
-
+# Creating Question API for passing/store Question data
 class QuestionCreateView(ModelViewSet):
     permission_classes = (IsAuthenticatedExaminer,)
     serializer_class = QuestionSerializer
     queryset = Question.objects.all()
 
 
-
+# Creating Option API for storing/passing Options 
 class OptionCreateView(ModelViewSet):
     permission_classes = (IsAuthenticatedExaminer,)
     serializer_class = OptionSerializer
@@ -96,6 +96,7 @@ class ExamScheduleCreateView(ModelViewSet):
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
+# Showing schedule for all existing exam all past, present or future one.
 class ExamScheduleListView(ViewSet):
     permission_classes = (IsAuthenticatedExaminee,)
     serializer_class = ExamScheduleSerializer

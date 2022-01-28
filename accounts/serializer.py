@@ -4,6 +4,7 @@ from rest_framework import serializers
 from accounts.models import CustomUser
 from django.contrib.auth.hashers import make_password
 
+# User Register Serializer for storing data using API.
 class RegisterUserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
         write_only=True,
@@ -19,6 +20,8 @@ class RegisterUserSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ['username','email','firstname','lastname','about','is_examiner','is_examinee','password']
 
+
+# User Login Serializer for login in via API. (its just for simple login purpose.)
 class LoginUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser

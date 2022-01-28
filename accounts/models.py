@@ -9,6 +9,7 @@ from django.utils import timezone
 from accounts.CustomAccountManager import CustomAccountManager
 # Create your models here.
 
+# Custom User Model : it implemented version of existing django User model as our required model.
 class CustomUser(AbstractUser,PermissionsMixin):
     email = models.EmailField(gettext_lazy('Email Address'),unique=True)
     username = models.CharField(max_length=50,unique=True)
@@ -21,10 +22,13 @@ class CustomUser(AbstractUser,PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     
+    # Creating objects of CustomAccountManager
     objects = CustomAccountManager()
     
+    # required field using which User identify itself
     USERNAME_FIELD = 'username'
     
+    # other required fields need to be there for our use.
     REQUIRED_FIELDS = ['email','firstname','lastname']
     
     def __str__(self) :

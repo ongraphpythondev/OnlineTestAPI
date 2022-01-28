@@ -4,7 +4,7 @@ from rest_framework.routers import DefaultRouter
 
 app_name = 'exam'
 
-
+# setting router/path of all exam related APIs.
 router = DefaultRouter()
 router.register('create-exam',ExamDetailCreateView,basename='create-exam')
 router.register('que-list',ExamDetailListView,basename='que-list')

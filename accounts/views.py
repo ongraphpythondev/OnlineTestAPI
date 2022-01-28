@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from rest_framework.viewsets import ViewSet
-from rest_framework.generics import GenericAPIView
-from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.viewsets import ViewSet
+from rest_framework.response import Response
 
 from accounts.models import CustomUser
 from accounts.serializer import RegisterUserSerializer , LoginUserSerializer
@@ -11,6 +10,7 @@ from django.contrib.auth import authenticate ,login ,logout
 
 # Create your views here.
 
+# Registering User 
 class RegisterAPIView(ViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = RegisterUserSerializer
@@ -22,6 +22,7 @@ class RegisterAPIView(ViewSet):
             return Response(serializer.data , status=status.HTTP_201_CREATED)
         return Response(serializer.errors , status = status.HTTP_400_BAD_REQUEST)
 
+# User Login API for logging in . 
 class LoginAPIView(ViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = LoginUserSerializer
@@ -35,7 +36,7 @@ class LoginAPIView(ViewSet):
         else:
             return Response({"Access denied": "User credential are incorrect"},status=status.HTTP_400_BAD_REQUEST)
 
-
+# Logout API , just a simple url for user logging out .
 class LogoutAPIView(ViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = LoginUserSerializer

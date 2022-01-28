@@ -4,7 +4,7 @@ from rest_framework.serializers import ModelSerializer
 
 from exam.models import Exam_Detail, MCQ, Solution, Exam_Schedule,Option,Question
 
-
+# MCQ model serializer
 class MCQSerializer(ModelSerializer):
 
     # def validate_question(self, value):
@@ -15,19 +15,20 @@ class MCQSerializer(ModelSerializer):
     class Meta:
         model = MCQ
         fields = ['examer','question','option']
-        
+
+# Question Model serializer
 class QuestionSerializer(ModelSerializer):
     class Meta:
         model = Question
         fields = ['question']
 
-
+# Option model serializer
 class OptionSerializer(ModelSerializer):
     class Meta:
         model = Option
         fields = ['option1','option2','option3','option4']
 
-
+# Solution model serializer
 class SolutionSerializer(ModelSerializer):
 
     # def validate_exam(self, value):
@@ -39,13 +40,13 @@ class SolutionSerializer(ModelSerializer):
         model = Solution
         fields = '__all__'
 
-
+# Exam detail model serializer
 class ExamDetailSerializer(ModelSerializer):
     class Meta:
         model = Exam_Detail
         fields = '__all__'
 
-
+# Exam Schedule model serializer
 class ExamScheduleSerializer(ModelSerializer):
     class Meta:
         model = Exam_Schedule
