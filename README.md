@@ -1,5 +1,10 @@
 # OnlineTestAPI
 ## Setup libraries and Environment for using OnlineTestAPI 
+### Used python versions :
+> python  3.8.10
+> django 4.0.1
+> djangorestframework 3.13.1
+
 ### Firstly Install python virtual environment and install django and djangorestframework in python virtualenvironment.
 #### install virtualenv :
 > pip install virtualenv
